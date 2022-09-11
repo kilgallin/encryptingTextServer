@@ -1,0 +1,37 @@
+ <html>
+ <head>
+ <script>
+ var writeVars = function(){
+    document.forms.read.username.value = document.forms.login.username.value;
+    document.forms.read.password.value = document.forms.login.password.value;
+    document.forms.write.username.value = document.forms.login.username.value;
+    document.forms.write.password.value = document.forms.login.password.value;
+    document.forms.write.filename.value = document.forms.read.filename.value;
+    document.forms.write.passphrase.value = document.forms.read.passphrase.value;
+    
+    return true;
+ }
+ </script>
+ </head>
+ <body>
+    <form name="login" action="login" method="POST">
+        Username: <input type="text" name="username">
+        Password: <input type="password" name="password">
+    </form>
+    <form name="read" action="read" method="POST" onsubmit="return writeVars()">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        Data source/target: <input type="text" name="filename">
+        Key: <input type="password" name="passphrase">
+        <input type="submit" value="Read">
+    </form>
+    <form name="write" action="write" method="POST" onsubmit="return writeVars()">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="filename">
+        <input type="hidden" name="passphrase">
+        Data to write: <input type="textarea" width="100" height="20" name="text">
+        <input type="submit" value="Write">
+    </form>
+ </body>
+ </html>

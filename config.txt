@@ -1,0 +1,2 @@
+[server]
+sslKeyFile=server.pem
